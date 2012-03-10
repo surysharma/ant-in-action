@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<project name="firstbuild" default="compile">
+        <target name="compile">
+            <javac srcdir="."/>
+            <echo message="Compiled successfully!!!"/>
+        </target>
+</project>
