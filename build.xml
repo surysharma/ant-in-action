@@ -1,7 +1,24 @@
 <?xml version="1.0"?>
-<project name="firstbuild" default="compile">
-        <target name="compile">
-            <javac srcdir="."/>
-            <echo message="Compiled successfully!!!"/>
+<project name="firstbuild" default="execute">
+
+        <target name="init" description="Create directories">
+            <mkdir dir="build/classes"/>
+            <mkdir dir="dist"/>
+            <echo message="Directories created...."/>
         </target>
+
+        <target name="compile" depends="init" description="Compile src files">
+            <javac srcdir="." destdir="build/classes"/>
+            <echo message="Compiled successfully..."/>
+        </target>
+
+    <target name="archive" depends="compile" description="Create JAR">
+        <jar basedir="build/classes" destfile="dist/helloworld.jar"/>
+        <echo message="Created jar file..."/>
+    </target>
+
+    <target name="execute" depends="compile" description="Run program">
+        <java classpath="build/classes" classname="com.antinaction.FirstBuild"/>
+    </target>
+    
 </project>
