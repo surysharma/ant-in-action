@@ -1,16 +1,27 @@
 <?xml version="1.0"?>
 <project name="firstbuild" default="execute">
+    <property name="home.dir" value="/Users/sureshsharma"/>
 
-        <target name="init" description="Create directories">
-            <mkdir dir="build/classes"/>
-            <mkdir dir="dist"/>
-            <echo message="Directories created...."/>
-        </target>
+    <target name="init" description="Create directories">
+        <mkdir dir="build/classes"/>
+        <mkdir dir="dist"/>
+        <mkdir dir="lib"/>
+        <echo message="Directories created...."/>
+        <copy todir="lib">
+            <fileset dir="${home.dir}/.m2/repository" defaultexcludes="true">
+                <filename name="**/*.jar"/>
+            </fileset>
 
-        <target name="compile" depends="init" description="Compile src files">
-            <javac srcdir="." destdir="build/classes"/>
-            <echo message="Compiled successfully..."/>
-        </target>
+        </copy>
+    </target>
+
+    <defaultexcludes echo="true" add="**/*.jar"/>
+
+
+    <target name="compile" depends="init" description="Compile src files">
+        <javac srcdir="." destdir="build/classes"/>
+        <echo message="Compiled successfully..."/>
+    </target>
 
     <target name="archive" depends="compile" description="Create JAR">
         <jar basedir="build/classes" destfile="dist/helloworld.jar"/>
@@ -20,5 +31,5 @@
     <target name="execute" depends="compile" description="Run program">
         <java classpath="build/classes" classname="com.antinaction.FirstBuild"/>
     </target>
-    
+
 </project>
