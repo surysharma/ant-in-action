@@ -7,9 +7,11 @@ import java.util.Arrays;
 import java.util.List;
 
 public class FirstBuild {
+
     static Logger logger = Logger.getLogger(FirstBuild.class);
 
     public static void main(String[] args) {
+        
         BasicConfigurator.configure();
         logger.debug("Hello world from log4J");
 //        System.out.println("Hello world");

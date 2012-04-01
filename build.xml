@@ -7,9 +7,9 @@
         <mkdir dir="dist"/>
         <mkdir dir="lib"/>
         <echo message="Directories created...."/>
-        <copy todir="lib">
+        <copy todir="lib" flatten="true">
             <fileset dir="${home.dir}/.m2/repository">
-                <patternset includes="**/*hibernate*.jar"/>
+                <patternset includes="**/*hibernate*.jar, **/*mockito*.jar"/>
             </fileset>
 
         </copy>
