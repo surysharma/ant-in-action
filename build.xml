@@ -8,14 +8,14 @@
         <mkdir dir="lib"/>
         <echo message="Directories created...."/>
         <copy todir="lib">
-            <fileset dir="${home.dir}/.m2/repository" defaultexcludes="true">
-                <filename name="**/*.jar"/>
+            <fileset dir="${home.dir}/.m2/repository">
+                <patternset includes="**/*hibernate*.jar"/>
             </fileset>
 
         </copy>
     </target>
 
-    <defaultexcludes echo="true" add="**/*.jar"/>
+    <!--<defaultexcludes echo="true" add="**/*.jar"/>-->
 
 
     <target name="compile" depends="init" description="Compile src files">
