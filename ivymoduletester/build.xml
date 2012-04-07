@@ -1,21 +1,32 @@
-<project name="ivytester" basedir="." default="init">
+<project name="ivytester" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
     <property name="src" location="src"/>
     <property name="build" location="build"/>
     <property name="dist" location="dist"/>
-    
+    <property name="lib" location="lib"/>
+
+    <path id="ivy.lib.path">
+        <fileset dir="/usr/share/ant/apache-ivy-2.2.0/" includes="*.jar"/>
+    </path>
     <target name="clean" description="Clean existing setup and start fresh">
         <delete dir="${build}"/>
-        <delete  dir="${dist}"/>
+        <delete dir="${dist}"/>
+        <delete dir="${lib}"/>
     </target>
 
     <target name="init" depends="clean" description="initialize the build file">
 
         <mkdir dir="${build}"/>
         <mkdir dir="${dist}"/>
+        <mkdir dir="${lib}"/>
         <echo message="Created build and dist dir's..."/>
     </target>
 
-    <target name="compile" depends="init" description="compile the src">
+    <target name="resolve" depends="init" description="resolve dependencies using ivy">
+        <taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpathref="ivy.lib.path"/>
+        <ivy:retrieve/>
+    </target>
+
+    <target name="compile" depends="resolve" description="compile the src">
         <javac srcdir="${src}" destdir="${build}"/>
         <echo message="Compiled the src and put in build dir..."/>
     </target>
