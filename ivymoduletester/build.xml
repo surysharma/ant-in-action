@@ -1,0 +1,29 @@
+<project name="ivytester" basedir=".">
+    <property name="src" location="src"/>
+    <property name="build" location="build"/>
+    <property name="dist" location="dist"/>
+    
+    <target name="clean" description="Clean existing setup and start fresh">
+        <delete dir="${build}"/>
+        <delete  dir="${dist}"/>
+    </target>
+
+    <target name="init" depends="clean" description="initialize the build file">
+
+        <mkdir dir="${build}"/>
+        <mkdir dir="${dist}"/>
+        <echo message="Created build and dist dir's..."/>
+    </target>
+
+    <target name="compile" depends="init" description="compile the src">
+        <javac srcdir="${src}" destdir="${build}"/>
+        <echo message="Compiled the src and put in build dir..."/>
+    </target>
+
+    <target name="dist" depends="compile" description="Add the build to the dist lib">
+        <mkdir dir="${dist}/lib"/>
+        <tstamp/>
+        <jar destfile="${dist}/lib/ivymoduletester-${DSTAMP}.jar" basedir="${build}"/>
+    </target>
+
+</project>
