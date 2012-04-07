@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+
+<project name="bookstore" default="compile" xmlns:ivy="antlib:org.apache.ivy.ant">
+
+    <property name="ivy.lib.path" value="/usr/share/ant/apache-ivy-2.2.0/"/>
+    <property name="build" value="build"/>
+    <property name="dist" value="dist"/>
+    <property name="lib" value="lib"/>
+
+    <target name="clean" description="cleanup">
+        <delete dir="build"/>
+        <delete dir="${dist}"/>
+        <delete dir="${lib}"/>
+    </target>
+
+    <target name="init" depends="clean" description="Create directories">
+        <mkdir dir="${build}/classes"/>
+        <mkdir dir="${dist}"/>
+        <mkdir dir="${lib}"/>
+        <echo message="Directories created...."/>
+    </target>
+
+    <target name="resolve" depends="init">
+        <path id="ivy.path">
+            <fileset dir="${ivy.lib.path}" includes="*.jar"/>
+        </path>
+        <taskdef resource="org/apache/ivy/ant/antlib.xml" uri="antlib:org.apache.ivy.ant" classpathref="ivy.path"/>
+        <ivy:retrieve/>
+    </target>
+
+    <target name="compile" depends="init" description="Compile src files">
+        <javac srcdir="." destdir="${build}"/>
+        <echo message="Compiled successfully..."/>
+    </target>
+
+    <target name="dist" depends="compile" description="Create JAR">
+        <tstamp/>
+        <jar basedir="build/classes" destfile="${dist}/bookstore-${DSTAMP}.jar"/>
+        <echo message="Created jar file..."/>
+    </target>
+
+</project>
