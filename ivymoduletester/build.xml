@@ -1,4 +1,4 @@
-<project name="ivytester" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
+<project name="ivytester" default="compile" basedir="." xmlns:ivy="antlib:org.apache.ivy.ant">
     <property name="src" location="src"/>
     <property name="build" location="build"/>
     <property name="dist" location="dist"/>
