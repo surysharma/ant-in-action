@@ -10,14 +10,12 @@
     <target name="clean" description="Clean existing setup and start fresh">
         <delete dir="${build}"/>
         <delete dir="${dist}"/>
-        <delete dir="${lib}"/>
     </target>
 
     <target name="init" depends="clean" description="initialize the build file">
 
         <mkdir dir="${build}"/>
         <mkdir dir="${dist}"/>
-        <mkdir dir="${lib}"/>
         <echo message="Created build and dist dir's..."/>
     </target>
 
