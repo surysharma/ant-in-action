@@ -17,5 +17,6 @@
 
     <dependencies>
         <dependency org="org.hibernate" name="hibernate-entitymanager" rev="3.6.10.Final"/>
+        <dependency org="mysql" name="mysql-connector-java" rev="5.1.19"/>
     </dependencies>
 </ivy-module>
