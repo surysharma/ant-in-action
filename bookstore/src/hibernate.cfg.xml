@@ -11,7 +11,13 @@
         <property name="connection.password"></property>
         <property name="connection.url">jdbc:mysql://localhost:3306/test</property>
 
-        <!-- Dialect resolution -->
+        <!-- Dialect resolution is not needed by default -->
         <!--<property name="dialect">org.hibernate.dialect.MySQLDialect</property>-->
+
+        <!-- show sql -->
+        <property name="show_sql">true</property>
+
+        <!-- ddl generation -->
+        <property name="hbm2ddl.auto">create</property>
     </session-factory>
 </hibernate-configuration>
