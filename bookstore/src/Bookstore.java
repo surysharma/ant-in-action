@@ -10,7 +10,7 @@ public class Bookstore {
 
     public static void main(String[] args) {
         SessionFactory sf = SessionFactoryUtil.sf;
-        Session session = sf.openSession();
+        Session session = sf.getCurrentSession();
         session.beginTransaction();
         Event event = Event.getEvent("event1", new Date());
         session.save(event);

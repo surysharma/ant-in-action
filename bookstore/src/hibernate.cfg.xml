@@ -14,8 +14,17 @@
         <!-- Dialect resolution is not needed by default -->
         <!--<property name="dialect">org.hibernate.dialect.MySQLDialect</property>-->
 
+        <!-- cp30 connection pool -->
+        <property name="c3p0.min_size">5</property>
+        <property name="c3p0.max_size">10</property>
+        <property name="c3p0.max_statements">50</property>
+
         <!-- show sql -->
         <property name="show_sql">true</property>
+
+        <!-- Current session context class -->
+        <property name="current_session_context_class">thread</property>
+        
 
         <!-- ddl generation -->
         <property name="hbm2ddl.auto">create</property>
